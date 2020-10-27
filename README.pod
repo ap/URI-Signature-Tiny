@@ -2,6 +2,8 @@
 
 =encoding UTF-8
 
+=for comment vim: et sw=2 ts=2 sts=2
+
 =head1 NAME
 
 URI::Signature::Tiny - Mint and verify server-signed URIs
@@ -141,5 +143,3 @@ L<RFCE<nbsp>4648, I<The Base16, Base32, and Base64 Data Encodings>, section 5., 
 =back
 
 =cut
-
-vim: et sw=2 ts=2 sts=2
