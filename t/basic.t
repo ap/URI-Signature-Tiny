@@ -48,28 +48,29 @@ ok _notary( before_verify => sub { split '!', shift, 2 } )->verify( "$uri!$sig" 
 	'Verifying works';
 
 my ( $ret, $fn, $ln, $e );
+my $zefram = eval { Carp->VERSION('1.25') } ? '.' : '';
 
 $e = do { local $@; eval { ( undef, $fn, $ln ) = caller; $ret = URI::Signature::Tiny->new }; $@ };
 is $ret, undef, 'Constructing an instance without a secret throws an exception';
-is $e, "Missing secret for URI::Signature::Tiny at $fn line $ln.\n",
+is $e, "Missing secret for URI::Signature::Tiny at $fn line $ln$zefram\n",
 	'... with the expected message';
 
 $e = do { local $@; eval { ( undef, $fn, $ln ) = caller; $ret = _notary->signature( undef ) }; $@ };
 is $ret, undef, 'Passing undef to the signature method throws an exception';
-is $e, "Cannot compute the signature of an undefined value at $fn line $ln.\n",
+is $e, "Cannot compute the signature of an undefined value at $fn line $ln$zefram\n",
 	'... with the expected message';
 
 $e = do { local $@; eval { ( undef, $fn, $ln ) = caller; $ret = _notary->signature }; $@ };
 is $ret, undef, '... and so does passing nothing';
-is $e, "Cannot compute the signature of an undefined value at $fn line $ln.\n",
+is $e, "Cannot compute the signature of an undefined value at $fn line $ln$zefram\n",
 	'... also with the expected message';
 
 $e = do { local $@; eval { ( undef, $fn, $ln ) = caller; $ret = _notary->sign( 1 ) }; $@ };
 is $ret, undef, 'Signing without a after_sign throws an exception';
-is $e, "No after_sign callback specified at $fn line $ln.\n",
+is $e, "No after_sign callback specified at $fn line $ln$zefram\n",
 	'... with the expected message';
 
 $e = do { local $@; eval { ( undef, $fn, $ln ) = caller; $ret = _notary->verify( 1 ) }; $@ };
 is $ret, undef, 'Signing without a before_verify throws an exception';
-is $e, "No before_verify callback specified at $fn line $ln.\n",
+is $e, "No before_verify callback specified at $fn line $ln$zefram\n",
 	'... with the expected message';
