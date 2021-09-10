@@ -2,7 +2,7 @@ use strict; use warnings;
 
 package URI::Signature::Tiny;
 
-our $VERSION = '1.001';
+our $VERSION = '1.002';
 
 use Digest::SHA ();
 use Carp ();
