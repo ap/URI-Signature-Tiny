@@ -1,15 +1,17 @@
 use 5.006; use strict; use warnings;
 
-my $u = 'github.com/ap/URI-Signature-Tiny';
+my $sc = q<https://github.com/ap/URI-Signature-Tiny>;
+my $bt = q<https://rt.cpan.org/Public/Dist/Display.html?Name=URI-Signature-Tiny>;
 
 my %META = (
 	name        => 'URI-Signature-Tiny',
 	author      => 'Aristotle Pagaltzis <pagaltzis@gmx.de>',
-	license     => 'perl_5',
 	x_copyright => { holder => 'Aristotle Pagaltzis', year => 2020 },
+	license     => 'perl_5',
 	resources   => {
-		repository => { type => 'git', url => "git://$u.git", web => "https://$u" },
-		bugtracker => { web => "https://$u/issues" },
+		license    => [ 'http://dev.perl.org/licenses/' ],
+		repository => { type => 'git', url => "$sc.git", web => $sc },
+		bugtracker => { web => $bt },
 	},
 	dynamic_config => 0,
 	prereqs => {
